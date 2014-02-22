@@ -1,0 +1,30 @@
+CACHE MANIFEST
+
+# version 2011-07-012 06:06:44 v1
+
+CACHE:
+
+# html files
+
+menu.html
+catwalk.html
+madlibs.html
+
+# css files
+
+
+# images
+static/cat.gif
+cat.gif
+
+# misc
+
+catmeow.ogg
+catmeow.mp3
+catmeow.wav
+
+FALLBACK:
+
+
+NETWORK:
+

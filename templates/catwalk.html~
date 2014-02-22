@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html> 
+ <head>
+   <title>Cat Walk</title>
+ </head>
+ <body>
+  
+  <img style="position:absolute;" src="{{ url_for('static', filename='cat.gif') }}" alt="cat">
+    
+  <script>
+	var img = document.getElementsByTagName('img')[0];
+
+	img.style.left = '0px';
+	var walkForwards = true;
+
+	function catWalk() {
+	  var currentLeft = parseInt(img.style.left);
+
+	  if (walkForwards && (currentLeft > (window.innerWidth-img.width))) {
+	    walkForwards = false;
+	  }
+	  if (!walkForwards && (currentLeft <= 0)) {
+	    walkForwards = true;
+	  }
+	  
+	  if (walkForwards) {
+	    img.style.left = (currentLeft + 10) + 'px';
+	  } else {
+	    img.style.left = (currentLeft - 10) + 'px';
+	  }
+	}
+	window.setInterval(catWalk, 50);
+	var audioElement = document.createElement('audio');
+	audioElement.setAttribute('src', 'catmeow.ogg');
+	audioElement.play();
+  </script>
+	<audio controls>
+  		<source src="catmeow.ogg" type="audio/ogg">
+  		<source src="catmeow.mp3" type="audio/mpeg">
+		<source src="catmeow.wav" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
+
+ </body>
+</html>

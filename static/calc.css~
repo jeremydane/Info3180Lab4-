@@ -1,0 +1,35 @@
+.card
+{
+	background:white;
+	width: 90px;
+	height: 100px;
+	margin: 4px;
+ 	border-color: red;
+  	border-width: 3px;
+  	border-style: solid;
+  	font-size: 25pt;
+  	position: relative;
+  	left:20px;
+	float:left;
+}
+
+.card1
+{
+	background:white;
+	width: 90px;
+	height: 100px;
+	margin: 4px;
+ 	border-color: black;
+  	border-width: 3px;
+  	border-style: solid;
+  	font-size: 25pt;
+  	position: relative;
+  	left:20px;
+	float:left;
+}
+
+.red
+{
+	color: red;
+}
+
