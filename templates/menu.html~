@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html manifest="manifest.appcache"> 
  <head>
+  <meta charset="utf-8" />	
   <title>Menu</title>
  </head>
  <body>
- 	<p>Catwalk</p>
-	<p>Mad Libs</p>
+	<p><h1> Lab 4 Menu</h1></p>
+ 	<p>
+		<h2><a href="http://lab4.jf620057694.appspot.com/catwalk">Catwalk</a></h2> 
+		
+	</p>
+	<p>
+		<h2><a href="http://lab4.jf620057694.appspot.com/madlib">Madlib</a></h2>
+	</p>
  </body>
 </html>
 

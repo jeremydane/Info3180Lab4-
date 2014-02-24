@@ -24,4 +24,4 @@ def hello(name=None):
 @app.route('/mad')
 @app.route('/<name>')
 def mad(name=None):
-  return render_template('madlibs.html', name=name)
+  return render_template('madlib.html', name=name)

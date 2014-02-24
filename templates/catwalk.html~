@@ -1,45 +1,70 @@
 <!DOCTYPE html>
-<html> 
+<html manifest="manifest.appcache"> 
  <head>
+   <meta charset="utf-8" />	
    <title>Cat Walk</title>
  </head>
  <body>
   
   <img style="position:absolute;" src="{{ url_for('static', filename='cat.gif') }}" alt="cat">
-    
   <script>
 	var img = document.getElementsByTagName('img')[0];
 
 	img.style.left = '0px';
 	var walkForwards = true;
 
-	function catWalk() {
+	function catWalk() 
+	{
 	  var currentLeft = parseInt(img.style.left);
 
-	  if (walkForwards && (currentLeft > (window.innerWidth-img.width))) {
+	  if (walkForwards && (currentLeft > (window.innerWidth-img.width))) 
+	  {
 	    walkForwards = false;
 	  }
-	  if (!walkForwards && (currentLeft <= 0)) {
+	  if (!walkForwards && (currentLeft <= 0)) 
+	  {
 	    walkForwards = true;
 	  }
 	  
-	  if (walkForwards) {
+	  if (walkForwards) 
+	  {
 	    img.style.left = (currentLeft + 10) + 'px';
-	  } else {
+	    localStorage["catPos"]= img.style.left;	
+	  }
+	  else 
+	  {
 	    img.style.left = (currentLeft - 10) + 'px';
+	    localStorage["catPos"]= img.style.left; 
 	  }
 	}
 	window.setInterval(catWalk, 50);
+
+	img.attachEvent("onmouseover", mOver(img));
+	img.attachEvent("onmouseout", mOut(img));
+	//img.onmouseover=mOver(this); 
+	//img.onmouseout= mOut(this);
+	function mOver(obj)
+	{
+	  obj.innerHTML="<embed src=\""+"catmeow.ogg, catmeow.mp3, catmeow.wav"+"\" hidden=\"true\" autostart=\"true\"loop=\"false\" />";
+	}
+
+	function mOut(obj)
+	{
+	  obj.innerHTML="<embed src=\""+"catmeow.ogg, catmeow.mp3, catmeow.wav"+"\" hidden=\"true\" autostart=\"true\"loop=\"false\" />";
+	}
+
+
 	var audioElement = document.createElement('audio');
-	audioElement.setAttribute('src', 'catmeow.ogg');
+	audioElement.setAttribute('src', 'catmeow.ogg, catmeow.mp3, catmeow.wav');
 	audioElement.play();
+
+	
   </script>
 	<audio controls>
-  		<source src="catmeow.ogg" type="audio/ogg">
-  		<source src="catmeow.mp3" type="audio/mpeg">
-		<source src="catmeow.wav" type="audio/wav">
+  		<source src="{{ url_for('static', filename='catmeow.ogg') }}" type="audio/ogg">
+  		<source src="{{ url_for('static', filename='catmeow.mp3') }}" type="audio/mpeg">
+		<source src="{{ url_for('static', filename='catmeow.wav') }}" type="audio/wav">
 		Your browser does not support the audio element.
 	</audio>
-
  </body>
 </html>
