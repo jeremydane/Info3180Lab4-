@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html> 
+<html manifest="manifest.appcache"> 
  <head>
   <meta charset="utf-8" />
   <title></title>
@@ -26,8 +26,9 @@ function libIt() {
   var adjective = document.getElementById("adjective").value;
   var noun = document.getElementById("noun").value;
   storyDiv.innerHTML = name + " married a " + adjective + " " + noun + "... So weird!";
+  localStorage["lib"]= JSON.stringify(storyDiv);
 }
-
+document.getElementById("story").innerHTML=localStorage.getItem("lib");
 var libButton = document.getElementById('lib-button');
 libButton.addEventListener('click', libIt);
 	</script>
