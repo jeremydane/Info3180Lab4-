@@ -10,7 +10,15 @@
   <script>
 	var img = document.getElementsByTagName('img')[0];
 
-	img.style.left = '0px';
+	if(typeof(localStorage.getItem("username"))=='undefined')
+	{
+		img.style.left= '0px';
+	}
+	else
+	{
+		img.style.left = localStorage.getItem("catpos");
+	}
+
 	var walkForwards = true;
 
 	function catWalk() 
@@ -39,28 +47,22 @@
 	}
 	window.setInterval(catWalk, 50);
 
-	img.attachEvent("onmouseover", mOver(img));
-	img.attachEvent("onmouseout", mOut(img));
-	//img.onmouseover=mOver(this); 
-	//img.onmouseout= mOut(this);
-	function mOver(obj)
-	{
-	  obj.innerHTML="<embed src=\""+"catmeow.ogg, catmeow.mp3, catmeow.wav"+"\" hidden=\"true\" autostart=\"true\"loop=\"false\" /"">";
-	}
-
-	function mOut(obj)
-	{
-	  obj.innerHTML="<embed src=\""+"catmeow.ogg, catmeow.mp3, catmeow.wav"+"\" hidden=\"true\" autostart=\"true\"loop=\"false\" /"">";
-	}
-
-
-	var audioElement = document.createElement('audio');
-	audioElement.setAttribute('src', 'catmeow.ogg, catmeow.mp3, catmeow.wav');
-	audioElement.play();
-
 	
+
+	img.onmouseover=function()
+	{
+		var meow=document.getElementById('cattalk');
+		meow.play();
+	};
+
+	img.onmouseout=function()
+	{
+		var meow=document.getElementById('cattalk');
+		meow.pause();
+	};
+
   </script>
-	<audio controls>
+	<audio id="cattalk">
   		<source src="{{ url_for('static', filename='catmeow.ogg') }}" type="audio/ogg">
   		<source src="{{ url_for('static', filename='catmeow.mp3') }}" type="audio/mpeg">
 		<source src="{{ url_for('static', filename='catmeow.wav') }}" type="audio/wav">

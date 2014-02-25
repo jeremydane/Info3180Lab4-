@@ -15,13 +15,13 @@ app = Flask(__name__.split('.')[0])
 def menu(name=None):
   return render_template('menu.html', name=name)
 
-@app.route('/cat')
+@app.route('/catwalk')
 @app.route('/<name>')
-def hello(name=None):
+def cat(name=None):
   return render_template('catwalk.html', name=name)
 
 
-@app.route('/mad')
+@app.route('/madlib')
 @app.route('/<name>')
 def mad(name=None):
   return render_template('madlib.html', name=name)
