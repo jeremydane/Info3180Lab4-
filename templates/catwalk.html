@@ -7,16 +7,18 @@
  <body>
   
   <img style="position:absolute;" src="{{ url_for('static', filename='cat.gif') }}" alt="cat">
+  <h2>The Walking cat</h2>
   <script>
 	var img = document.getElementsByTagName('img')[0];
 
-	if(typeof(localStorage.getItem("username"))=='undefined')
+	
+	if(localStorage && localStorage.getItem('catpos'))
 	{
-		img.style.left= '0px';
+		img.style.left = localStorage.getItem('catpos');
 	}
 	else
 	{
-		img.style.left = localStorage.getItem("catpos");
+		img.style.left= '0px'
 	}
 
 	var walkForwards = true;
